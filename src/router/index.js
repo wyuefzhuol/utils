@@ -4,11 +4,11 @@ import Map from '../components/Map.vue'
 
 const routes = [
   {
-    path: '/utils',
+    path: '/',
     component: Index
   },
   {
-    path: '/utils/map',
+    path: '/map',
     component: Map
   }
 ]

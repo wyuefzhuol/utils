@@ -14,7 +14,7 @@
                     <img :src="util.image" class="object-cover h-48">
                   </template>
                   <div class="text-center mt-3 font-bold">{{util.title}}</div>
-                  <n-ellipsis :line-clamp="2" class="mt-3 text-xs opacity-50">{{util.description}}</n-ellipsis>
+                  <n-ellipsis :line-clamp="1" class="mt-3 text-xs opacity-50">{{util.description}}</n-ellipsis>
               </n-card>
             </router-link>
           </n-gi>
@@ -27,6 +27,7 @@
 <script setup>
 import MapUtilsImage from '../assets/mapUtils.jpg'
 import JSONUtilsImage from '../assets/jsonUtils.png'
+import EncodingUtilsImage from '../assets/encodingUtils.jpg'
 import {ref} from 'vue'
 
 const utils = ref([
@@ -41,6 +42,12 @@ const utils = ref([
     image: JSONUtilsImage,
     description: 'JSON format',
     path: 'json'
+  },
+  {
+    title: 'Encoding Utils',
+    image: EncodingUtilsImage,
+    description: 'Image <-> Base64、进制转换',
+    path: 'encoding'
   }
 ])
 </script>
