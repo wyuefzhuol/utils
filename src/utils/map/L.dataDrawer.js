@@ -21,7 +21,7 @@ L.Control.DataDrawer = L.Control.extend({
     dataDrawer.id = 'wktDrawerUtils'
     dataDrawer.style.padding = '10px'
     dataDrawer.style.background = 'white'
-    dataDrawer.innerHTML = '<div id="wktDrawerDataList" style="border-bottom: 1px solid black;margin-bottom: 5px"></div><div>WKT/GeoJSON:</div>' +
+    dataDrawer.innerHTML = '<div id="wktDrawerDataList" style="margin-bottom: 5px"></div><div>WKT/GeoJSON:</div>' +
       '<textarea id="wktDrawerWKTInput" rows="15" cols="50" style="border: 1px solid">' +
       '</textarea>'
     const buttonBox = document.createElement('div')
@@ -61,10 +61,11 @@ L.Control.DataDrawer = L.Control.extend({
         })
         const id = uuid()
         data.options.id = id
+        const wktStr = wkt.fromObject(data).write()
         this._map.options.dataLayers[id] = {
-          label: textarea.value.substr(0, 40) + '...',
+          label: wktStr.substr(0, 40) + '...',
           graph: data,
-          raw: textarea.value
+          raw: wktStr
         }
         data.addTo(this._map)
         textarea.value = ''
@@ -85,6 +86,7 @@ L.Control.DataDrawer = L.Control.extend({
     Object.keys(dataList).forEach(dataKey => {
       const data = dataList[dataKey]
       const item = document.createElement('div')
+      item.style.borderBottom = '1px solid black'
       const label = document.createElement('button')
       label.innerHTML = '· ' + data.label
       label.onclick = () => {
