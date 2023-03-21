@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@geoman-io/leaflet-geoman-free": "^2.14.2",
     "leaflet": "^1.9.3",
     "leaflet.layerscontrol-minimap": "^1.0.21",
     "naive-ui": "^2.34.3",
