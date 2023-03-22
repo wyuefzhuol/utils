@@ -1,88 +1,54 @@
 <template>
-<!--  <div id="Canvas" class="Canvas">-->
-<!--    <pre class="CodeContainer">-->
-<!--      <span class="ObjectBrace">{</span>-->
-<!--      <span><img src="/images/Expanded.gif" onclick="ExpImgClicked(this)"></span>-->
-<!--      <span class="collapsible">-->
-<!--        <span class="PropertyName">"name"</span>: <span class="String">"张三"<span class="Comma">,</span></span>-->
-<!--        <span class="PropertyName">"addtime"</span>: <span class="String">"2014-01-01"<span class="Comma">,</span> </span>-->
-<!--        <span class="PropertyName">"username"</span>: <span class="String">"abc"<span class="Comma">,</span> </span>-->
-<!--        <span class="PropertyName">"id"</span>: <span class="ObjectBrace">{</span>-->
-<!--        <span><img src="/images/Expanded.gif" onclick="ExpImgClicked(this)"></span>-->
-<!--        <span class="collapsible">-->
-<!--          <span class="PropertyName">"nihao"</span>: <span class="String">"woshiwangfeilong"</span>-->
-<!--        </span>-->
-<!--        <span class="ObjectBrace">}</span>-->
-<!--      </span>-->
-<!--      <span class="ObjectBrace">}</span>-->
-<!--    </pre>-->
-<!--  </div>-->
+  <n-grid x-gap="12" :cols="2">
+    <n-gi class="p-6">
+      <svg t="1679300417962" class="icon mb-4 cursor-pointer" @click="back" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2752" width="24" height="24">
+        <path d="M675.328 117.717333A425.429333 425.429333 0 0 0 512 85.333333C276.352 85.333333 85.333333 276.352 85.333333 512s191.018667 426.666667 426.666667 426.666667 426.666667-191.018667 426.666667-426.666667c0-56.746667-11.093333-112-32.384-163.328a21.333333 21.333333 0 0 0-39.402667 16.341333A382.762667 382.762667 0 0 1 896 512c0 212.074667-171.925333 384-384 384S128 724.074667 128 512 299.925333 128 512 128c51.114667 0 100.8 9.984 146.986667 29.12a21.333333 21.333333 0 0 0 16.341333-39.402667z m-324.693333 373.013334l174.464-174.485334a21.141333 21.141333 0 0 0-0.192-29.973333 21.141333 21.141333 0 0 0-29.973334-0.192l-208.256 208.256a20.821333 20.821333 0 0 0-6.122666 14.976c0.042667 5.418667 2.133333 10.837333 6.314666 14.997333l211.178667 211.2a21.141333 21.141333 0 0 0 29.973333 0.213334 21.141333 21.141333 0 0 0-0.213333-29.973334l-172.629333-172.629333 374.997333 2.602667a20.693333 20.693333 0 0 0 21.034667-21.034667 21.482667 21.482667 0 0 0-21.333334-21.333333l-379.242666-2.624z" fill="#3D3D3D" p-id="2753"></path>
+      </svg>
+      <n-input
+        v-model:value="value"
+        type="textarea"
+        placeholder="Please input JSON String"
+        :rows="35"
+        @change="inputChange"
+        clearable
+      />
+    </n-gi>
+    <n-gi class="p-6 h-screen overflow-y-auto">
+      <JsonViewer :value="jsonData" copyable boxed expanded theme="dark" />
+    </n-gi>
+  </n-grid>
 </template>
 
 <script setup>
+import { useMessage } from 'naive-ui'
+import { useRouter } from 'vue-router'
+
+const message = useMessage()
+const router = useRouter()
+let obj = {}
+const value = ref('')
+const jsonData = ref(obj)
+
+const back = () => {
+  router.push({path: '/'})
+}
+
+const inputChange = () => {
+  try {
+    if (value.value) {
+      jsonData.value = JSON.parse(value.value)
+    } else {
+      jsonData.value = {}
+    }
+  } catch (e) {
+    jsonData.value = {}
+    message.error('It`s not a valid JSON string!')
+  }
+};
 </script>
 
 <style scoped>
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-div.Canvas {
-  font-size: 13px;
-  background-color: #ECECEC;
-  color: #000000;
-  border: solid 1px #CECECE;
-}
-PRE.CodeContainer img {
-  cursor: pointer;
-  border: none;
-  margin-bottom: -1px;
-}
-img {
-  vertical-align: middle;
-  display: inline;
-}
-img {
-  border: 0;
-}
-PRE.CodeContainer {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-pre {
-  display: block;
-  padding: 10px;
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.42857143;
-  color: #333;
-  word-break: break-all;
-  word-wrap: break-word;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-code, kbd, pre, samp {
-  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-}
-code, kbd, pre, samp {
-  font-family: monospace,monospace;
-  font-size: 1em;
-}
-.ObjectBrace {
-  color: #00AA00;
-  font-weight: bold;
-}
-.PropertyName {
-  color: #CC0000;
-  font-weight: bold;
-}
-.String {
-  color: #007777;
-}
-.Comma {
-  color: #000000;
-  font-weight: bold;
+.box {
+  margin: 15px;
 }
 </style>
