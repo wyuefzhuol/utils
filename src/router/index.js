@@ -2,6 +2,7 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 import Index from '../components/index.vue'
 import Map from '../components/Map.vue'
 import Json from '../components/Json.vue'
+import Color from '../components/Color.vue'
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/json',
     component: Json
+  },
+  {
+    path: '/color',
+    component: Color
   }
 ]
 

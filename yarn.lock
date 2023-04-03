@@ -490,6 +490,11 @@ acorn@^8.8.2:
   resolved "https://registry.npmmirror.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
 
+animejs@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.npmmirror.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
+  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
+
 anymatch@~3.1.2:
   version "3.1.3"
   resolved "https://registry.npmmirror.com/anymatch/-/anymatch-3.1.3.tgz#790c58b19ba1720a84205b57c618d5ad8524973e"
@@ -587,6 +592,11 @@ clipboard@^2.0.10, clipboard@^2.0.11:
     good-listener "^1.2.2"
     select "^1.1.2"
     tiny-emitter "^2.0.0"
+
+color-disc@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/color-disc/-/color-disc-1.0.2.tgz#578b7703f8bbba666ba1bbe7b2da1823089b8b65"
+  integrity sha512-5cxTlIARaRvnwdqh0dwzWi3p4S7JXAIjF2mPBHqhnfsbc7Kc7JpP7ll07eLEVIWoRODPyOn7+OUy5Iz4R2XsZA==
 
 color-name@^1.1.4:
   version "1.1.4"

@@ -27,7 +27,7 @@
 <script setup>
 import MapUtilsImage from '../assets/mapUtils.jpg'
 import JSONUtilsImage from '../assets/jsonUtils.png'
-import EncodingUtilsImage from '../assets/encodingUtils.jpg'
+import ColorUtilsImage from '../assets/colorUtils.jpeg'
 import {ref} from 'vue'
 
 const utils = ref([
@@ -44,10 +44,10 @@ const utils = ref([
     path: 'json'
   },
   {
-    title: 'Encoding Utils',
-    image: EncodingUtilsImage,
-    description: 'Image <-> Base64、进制转换',
-    path: 'encoding'
+    title: 'Color Utils',
+    image: ColorUtilsImage,
+    description: '颜色工具',
+    path: 'color'
   }
 ])
 </script>
