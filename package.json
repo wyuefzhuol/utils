@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@geoman-io/leaflet-geoman-free": "^2.14.2",
+    "@vicons/ionicons5": "^0.12.0",
     "animejs": "^3.2.1",
     "clipboard": "^2.0.11",
     "color-disc": "^1.0.2",

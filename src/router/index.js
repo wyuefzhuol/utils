@@ -1,8 +1,9 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-import Index from '../components/index.vue'
-import Map from '../components/Map.vue'
-import Json from '../components/Json.vue'
-import Color from '../components/Color.vue'
+import Index from '../views/index.vue'
+import Map from '../views/Map.vue'
+import Json from '../views/Json.vue'
+import Color from '../views/Color.vue'
+import Fishing from '../views/Fishing.vue'
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
   {
     path: '/color',
     component: Color
+  },
+  {
+    path: '/fishing',
+    component: Fishing
   }
 ]
 
