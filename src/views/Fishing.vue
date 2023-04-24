@@ -8,11 +8,17 @@
         <Gobang />
       </div>
     </n-tab-pane>
+    <n-tab-pane name="mineSweeper" tab="MineSweeper">
+      <div class="flex justify-center">
+        <MineSweeper />
+      </div>
+    </n-tab-pane>
   </n-tabs>
 </template>
 
 <script setup>
 import Gobang from "../components/Fishing/Gobang.vue";
+import MineSweeper from "../components/Fishing/MineSweeper.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter()
