@@ -32,6 +32,7 @@ Mine.prototype.randomNum = function () {
 //在Mine原型上绑定创建棋盘的方格的方法
 Mine.prototype.createDom = function () {
   var This = this;
+  this.parent.innerHTML = '';
 
   var table = document.createElement('table');
   table.oncontextmenu = function () {
