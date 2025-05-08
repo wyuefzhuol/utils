@@ -25,5 +25,5 @@ export default defineConfig({
       resolvers: [NaiveUiResolver()]
     })
   ],
-  base: '/dist/'
+  base: '/'
 })
