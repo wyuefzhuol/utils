@@ -4,7 +4,6 @@ import Map from '../views/Map.vue'
 import Json from '../views/Json.vue'
 import Color from '../views/Color.vue'
 import Fishing from '../views/Fishing.vue'
-import PS from '../views/PS.vue'
 import UUID from '../views/UUID.vue'
 
 const routes = [
@@ -27,10 +26,6 @@ const routes = [
   {
     path: '/fishing',
     component: Fishing
-  },
-  {
-    path: '/ps',
-    component: PS
   },
   {
     path: '/uuid',
