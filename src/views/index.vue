@@ -29,6 +29,7 @@ import MapUtilsImage from '../assets/mapUtils.jpg'
 import JSONUtilsImage from '../assets/jsonUtils.png'
 import ColorUtilsImage from '../assets/colorUtils.jpeg'
 import FishingUtilsImage from '../assets/fishingUtils.jpeg'
+import UUIDUtilsImage from '../assets/UUID.png'
 import {ref} from 'vue'
 
 const utils = ref([
@@ -55,6 +56,12 @@ const utils = ref([
     image: FishingUtilsImage,
     description: 'only 鱼',
     path: 'fishing'
+  },
+  {
+    title: 'UUID Utils',
+    image: UUIDUtilsImage,
+    description: 'UUID 生成',
+    path: 'uuid'
   }
 ])
 </script>

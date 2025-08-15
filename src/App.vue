@@ -2,7 +2,7 @@
 import FishingFooter from "./assets/js/fishingFooter.js";
 import { onMounted } from "vue";
 
-const showFooter = ref(true)
+const showFooter = ref(false)
 
 onMounted(() => {
   FishingFooter.init('fishingFooter')

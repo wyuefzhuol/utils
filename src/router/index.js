@@ -5,6 +5,7 @@ import Json from '../views/Json.vue'
 import Color from '../views/Color.vue'
 import Fishing from '../views/Fishing.vue'
 import PS from '../views/PS.vue'
+import UUID from '../views/UUID.vue'
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
   {
     path: '/ps',
     component: PS
+  },
+  {
+    path: '/uuid',
+    component: UUID
   }
 ]
 
