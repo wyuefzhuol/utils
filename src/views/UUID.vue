@@ -34,7 +34,7 @@
           <n-card title="生成的 UUID 列表" size="small">
             <n-space vertical size="small">
               <div class="flex justify-between items-center mb-2">
-                <n-text>共生成 {{ uuidList.length }} 个 UUID</n-text>
+                <n-text>共生成 {{ uuidList.length }} 个 UUID，最多 50 个</n-text>
                 <n-button size="small" @click="copyAllUUIDs">复制全部</n-button>
               </div>
               <div v-for="(uuid, index) in uuidList" :key="index" class="uuid-item">
@@ -84,7 +84,7 @@ const router = useRouter()
 
 // UUID 生成相关状态
 const uuidVersion = ref('v4')
-const generateCount = ref(1)
+const generateCount = ref(10)
 const formatOptions = ref([])
 const uuidList = ref([])
 const highlightedUUIDs = ref(new Set())
