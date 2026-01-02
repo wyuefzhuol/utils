@@ -22,10 +22,19 @@
     </n-gi>
     <n-gi class="p-6 h-screen overflow-y-auto" :span="inputVisible ? '12' : '23'">
       <n-space vertical>
-        <n-radio-group v-model:value="formatType" size="small">
-          <n-radio-button value="TREE" label="树形模式"></n-radio-button>
-          <n-radio-button value="TABLE" label="表格模式"></n-radio-button>
-        </n-radio-group>
+        <n-space>
+          <n-radio-group v-model:value="formatType" size="small">
+            <n-radio-button value="TREE" label="树形模式"></n-radio-button>
+            <n-radio-button value="TABLE" label="表格模式"></n-radio-button>
+          </n-radio-group>
+          <n-button
+              v-if="formatType === 'TABLE' && jsonData instanceof Array && jsonData.length > 0 && jsonData[0] instanceof Object"
+              type="primary"
+              size="small"
+              class="mb-2"
+              @click="downloadCSV"
+          >下载CSV</n-button>
+        </n-space>
         <JsonViewer :value="jsonData" copyable boxed expanded theme="dark" v-if="formatType === 'TREE'" />
         <n-data-table
           v-else-if="jsonData instanceof Array && jsonData.length > 0 && jsonData[0] instanceof Object && formatType === 'TABLE'"
@@ -84,6 +93,29 @@ const inputChange = () => {
     jsonData.value = {}
     message.error('It`s not a valid JSON string!')
   }
+};
+
+const downloadCSV = () => {
+  const keys = Object.keys(jsonData.value[0]);
+  const csv = [
+    keys.join(','), // header row first
+    ...jsonData.value.map(row => keys.map(key => JSON.stringify(row[key], replacer)).join(','))
+  ].join('\r\n');
+
+  function replacer(key, value) {
+    if (typeof value === 'string') {
+      return value.replace(/"/g, '""'); // escape double quotes
+    }
+    return value;
+  }
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.setAttribute('href', url);
+  a.setAttribute('download', 'data.csv');
+  a.click();
+  URL.revokeObjectURL(url);
 };
 </script>
 

@@ -30,6 +30,7 @@ import JSONUtilsImage from '../assets/jsonUtils.png'
 import ColorUtilsImage from '../assets/colorUtils.jpeg'
 import FishingUtilsImage from '../assets/fishingUtils.jpeg'
 import UUIDUtilsImage from '../assets/UUID.png'
+import DateTimeUtilsImage from '../assets/dateTimeUtil.jpeg'
 import {ref} from 'vue'
 
 const utils = ref([
@@ -62,6 +63,12 @@ const utils = ref([
     image: UUIDUtilsImage,
     description: 'UUID 生成',
     path: 'uuid'
+  },
+  {
+    title: 'DateTime Utils',
+    image: DateTimeUtilsImage,
+    description: '时间工具',
+    path: 'datetime'
   }
 ])
 </script>

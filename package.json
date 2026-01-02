@@ -17,6 +17,7 @@
     "echarts": "^5.4.1",
     "leaflet": "^1.9.3",
     "leaflet.layerscontrol-minimap": "^1.0.21",
+    "moment": "^2.30.1",
     "naive-ui": "^2.34.3",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",

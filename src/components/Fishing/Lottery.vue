@@ -16,13 +16,26 @@
         <button @click="stop" v-if="isStart">Stop</button>
       </div>
     </div>
+    <div class="lottery-manage-panel floating-panel">
+      <h3>列表维护</h3>
+      <input v-model="newHoliday" placeholder="添加，可逗号分隔批量添加" @keyup.enter="onAdd" />
+      <input v-model="newHolidayIdx" placeholder="按数量添加" @keyup.enter="onAddIdx" />
+      <button @click="febHolidays = [];rerenderList()">清除</button>
+      <div>
+        <div v-for="(item, idx) in febHolidays" class="flex justify-between">
+          <span>{{`${idx + 1}: ${item}`}}</span>
+          <span class="cursor-pointer" @click="onDelete(idx)">删除</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
 
-const febHolidays = ref([
+// 节日列表配置，便于维护
+const holidayList = [
   "Dark Chocolate Day",
   "Groundhog Day",
   "Carrot Cake Day",
@@ -51,7 +64,8 @@ const febHolidays = ref([
   "Pistachio Day",
   "Polar Bear Day",
   "Tooth Fairy Day"
-])
+]
+const febHolidays = ref([...holidayList]);
 const ulEl = ref(null);
 const tipButtons = ref(null);
 const coin = ref(null);
@@ -59,6 +73,8 @@ const daynumber = ref(0);
 const activeIndex = ref(0);
 let job = ref(null);
 let isStart = ref(false);
+const newHoliday = ref("");
+const newHolidayIdx = ref("");
 
 const adjustDay = (nr) => {
   daynumber.value += nr;
@@ -134,6 +150,40 @@ const flipCoinLoop = () => {
     tipButtons.value.classList.add('coin-landed')
     coin.value.style.setProperty('opacity', 0)
   }
+}
+
+const rerenderList = () => {
+  // 重新渲染转盘
+  if (!ulEl.value) return;
+  ulEl.value.innerHTML = '';
+  febHolidays.value.forEach((holiday, idx) => {
+    const liEl = document.createElement("li");
+    liEl.style.setProperty("--day_idx", idx);
+    liEl.innerHTML = `<time>${idx + 1}</time><span>${holiday}</span>`;
+    ulEl.value.append(liEl);
+  });
+  ulEl.value.style.setProperty("--rotateDegrees", -360 / febHolidays.value.length);
+  adjustDay(0);
+}
+
+const onAdd = () => {
+  if (newHoliday.value.trim()) {
+    febHolidays.value = febHolidays.value.concat(newHoliday.value.trim().split(','));
+    newHoliday.value = "";
+    rerenderList();
+  }
+}
+const onAddIdx = () => {
+  if (newHolidayIdx.value.trim()) {
+    const idx = parseInt(newHolidayIdx.value.trim());
+    febHolidays.value = febHolidays.value.concat(Array.from({ length: idx }, (_, i) => 1 + i));
+    newHolidayIdx.value = "";
+    rerenderList();
+  }
+}
+const onDelete = (idx) => {
+  febHolidays.value.splice(idx, 1);
+  rerenderList();
 }
 
 onMounted(() => {
@@ -466,5 +516,82 @@ onMounted(() => {
   100% {
     transform: rotate();
   }
+}
+
+.lottery-manage-panel {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.lottery-manage-panel h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.lottery-manage-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lottery-manage-panel .manage-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+}
+.lottery-manage-panel .manage-item button {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.lottery-manage-panel .manage-item button:hover {
+  background: #d62839;
+}
+.lottery-manage-panel input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: white;
+  margin-right: 0.5rem;
+}
+.lottery-manage-panel input:focus {
+  outline: none;
+  border-color: #39657e;
+}
+.lottery-manage-panel button {
+  background: #39657e;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.lottery-manage-panel button:hover {
+  background: rgb(6, 60, 131);
+}
+
+.floating-panel {
+  position: fixed;
+  top: 120px;
+  left: 50px;
+  z-index: 1000;
+  background: rgba(30, 30, 30, 0.98);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  border-radius: 8px;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 </style>
