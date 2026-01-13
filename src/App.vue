@@ -1,12 +1,17 @@
 <script setup>
-import FishingFooter from "./assets/js/fishingFooter.js";
-import { onMounted } from "vue";
+// import FishingFooter from "./assets/js/fishingFooter.js";
+import {onMounted, ref} from "vue";
 
-const showFooter = ref(false)
+// const showFooter = ref(false)
 
-// onMounted(() => {
-//   FishingFooter.init('fishingFooter')
-// })
+onMounted(() => {
+  console.log(` _____   _____    _   _____        _   _   _____   _   _       _____
+| ____| |  _  \\  | | /  ___|      | | | | |_   _| | | | |     /  ___/
+| |__   | |_| |  | | | |          | | | |   | |   | | | |     | |___
+|  __|  |  _  /  | | | |          | | | |   | |   | | | |     \\___  \\
+| |___  | | \\ \\  | | | |____      | |_| |   | |   | | | |___   ___| |
+|_____| |_|  \\_\\ |_| \\_____|      \\_____/   |_|   |_| |_____| /_____/ `)
+})
 </script>
 
 <template>

@@ -6,6 +6,7 @@ import Color from '../views/Color.vue'
 import Fishing from '../views/Fishing.vue'
 import UUID from '../views/UUID.vue'
 import Datetime from '../views/Datetime.vue'
+import JSConsole from "../views/JSConsole.vue";
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
   {
     path: '/datetime',
     component: Datetime
+  },
+  {
+    path: '/console',
+    component: JSConsole
   }
 ]
 

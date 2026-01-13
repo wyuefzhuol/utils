@@ -107,7 +107,7 @@ const codeMap = computed(() => {
       'SYSTIMESTAMP',
       'UTC: SYSDATE - 1/3'
     ] : isValid ? [
-      `TO_DATE(\"${dateStr}\", 'YYYY-MM-DD HH24:MI:SS')`
+      `TO_DATE('${dateStr}', 'YYYY-MM-DD HH24:MI:SS')`
     ] : [],
     MongoDB: isEmpty ? [
       'new Date()'
@@ -118,7 +118,7 @@ const codeMap = computed(() => {
       'NOW()',
       'UTC: UTC_TIMESTAMP()'
     ] : isValid ? [
-      `STR_TO_DATE(\"${dateStr}\", '%Y-%m-%d %H:%i:%s')`
+      `STR_TO_DATE('${dateStr}', '%Y-%m-%d %H:%i:%s')`
     ] : [],
     JavaScript: isEmpty ? [
       'new Date()',

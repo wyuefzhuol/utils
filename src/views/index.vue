@@ -31,6 +31,7 @@ import ColorUtilsImage from '../assets/colorUtils.jpeg'
 import FishingUtilsImage from '../assets/fishingUtils.jpeg'
 import UUIDUtilsImage from '../assets/UUID.png'
 import DateTimeUtilsImage from '../assets/dateTimeUtil.jpeg'
+import ConsoleUtilImage from '../assets/ConsoleUtil.png'
 import {ref} from 'vue'
 
 const utils = ref([
@@ -69,6 +70,12 @@ const utils = ref([
     image: DateTimeUtilsImage,
     description: '时间工具',
     path: 'datetime'
+  },
+  {
+    title: 'Console Utils',
+    image: ConsoleUtilImage,
+    description: '一些用在浏览器控制台的小工具',
+    path: 'console'
   }
 ])
 </script>
